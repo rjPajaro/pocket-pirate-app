@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="PocketPirate.Application/PocketPirate.Application.csproj" />
+  <Project Path="PocketPirate/PocketPirate.Api.csproj" />
+</Solution>

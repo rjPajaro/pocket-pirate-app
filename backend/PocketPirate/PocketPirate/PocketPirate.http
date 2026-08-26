@@ -1,0 +1,6 @@
+@PocketPirate_HostAddress = http://localhost:5297
+
+GET {{PocketPirate_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
