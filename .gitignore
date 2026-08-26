@@ -12,6 +12,11 @@ obj/
 packages/
 project.lock.json
 
+# Large binaries
+*.exe
+ffmpeg.exe
+ffprobe.exe
+
 # Logs
 *.log
 
