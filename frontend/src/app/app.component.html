@@ -1,0 +1,37 @@
+﻿<div class="container">
+  <div class="card">
+    <div class="header">
+      <h1>Pocket Pirate</h1>
+      <p class="subtitle">Paste a video URL and download as MP3 or MP4</p>
+    </div>
+
+    <div class="input-group">
+      <input
+        type="url"
+        [(ngModel)]="url"
+        placeholder="https://www.youtube.com/watch?v=..."
+        class="url-input"
+        (keyup.enter)="!loading && download('mp3')"
+        [disabled]="loading"
+      />
+    </div>
+
+    <div class="button-group">
+      <button class="btn btn-audio" (click)="download('mp3')" [disabled]="loading">
+        <span class="btn-icon">&#x1F3A7;</span> Download MP3
+      </button>
+      <button class="btn btn-video" (click)="download('mp4')" [disabled]="loading">
+        <span class="btn-icon">&#x1F3AC;</span> Download MP4
+      </button>
+    </div>
+
+    <div class="loading" *ngIf="loading">
+      <div class="spinner"></div>
+      <span>Converting&hellip;</span>
+    </div>
+
+    <div class="error" *ngIf="error">
+      {{ error }}
+    </div>
+  </div>
+</div>
