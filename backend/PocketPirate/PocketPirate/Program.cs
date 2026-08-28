@@ -9,7 +9,7 @@ builder.Services.AddScoped<IMediaConverterService, MediaConverterService>();
 builder.Services.AddControllers();
 builder.Services.AddCors(options =>
     options.AddDefaultPolicy(policy =>
-        policy.WithOrigins("http://localhost:4200")
+        policy.AllowAnyOrigin()
               .AllowAnyHeader()
               .AllowAnyMethod()));
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -22,8 +22,6 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
-
-app.UseHttpsRedirection();
 
 app.UseCors();
 

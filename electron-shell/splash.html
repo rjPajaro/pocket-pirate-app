@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #fff;
+    user-select: none;
+    -webkit-app-region: drag;
+  }
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 32px;
+  }
+  .track {
+    width: 200px;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .bar {
+    height: 100%;
+    width: 40%;
+    background: linear-gradient(90deg, #6c63ff, #a78bfa);
+    border-radius: 2px;
+    animation: slide 1.2s ease-in-out infinite;
+  }
+  .label {
+    margin-top: 16px;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.5px;
+  }
+  @keyframes slide {
+    0%   { transform: translateX(-100%); }
+    50%  { transform: translateX(150%); }
+    100% { transform: translateX(350%); }
+  }
+</style>
+</head>
+<body>
+  <h1>Pocket Pirate</h1>
+  <p style="font-size:0.75rem;color:rgba(255,255,255,0.3);margin-bottom:24px">v0.1.0</p>
+  <div class="track"><div class="bar"></div></div>
+  <p class="label">Starting up…</p>
+</body>
+</html>

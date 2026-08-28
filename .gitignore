@@ -35,3 +35,14 @@ appsettings.*.json
 
 # VS Code
 .vscode/
+# Electron shell - build artifacts and dependencies
+electron-shell/node_modules/
+electron-shell/resources/api/
+electron-shell/resources/app/
+
+# Installer output
+dist-electron/
+
+# Frontend - build artifacts and dependencies
+frontend/node_modules/
+frontend/dist/

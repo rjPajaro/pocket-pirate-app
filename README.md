@@ -82,6 +82,48 @@ Build artifacts are output to the `dist/` directory.
 ng test
 ```
 
+## Desktop Installer (Electron)
+
+The `electron-shell/` directory wraps the Angular UI and .NET API into a single Windows installer using Electron. End users install it like any normal app — no Node, .NET, ffmpeg, or yt-dlp required on their machine.
+
+### Prerequisites (build machine only)
+
+- [Node.js](https://nodejs.org/) and npm
+- [.NET 10 SDK](https://dotnet.microsoft.com/download)
+- `yt-dlp.exe` and `ffmpeg.exe` in `backend\PocketPirate\PocketPirate\bin\Debug\net10.0\tools\` (see above)
+
+### Build the installer
+
+```powershell
+.\build-electron.ps1
+```
+
+This script:
+1. Builds the Angular frontend (`ng build --configuration production`)
+2. Publishes the .NET API as a self-contained `win-x64` executable
+3. Copies everything into `electron-shell/resources/`
+4. Runs `electron-builder` to produce a Windows NSIS installer
+
+The installer is output to `dist-electron/`.
+
+### What happens at runtime
+
+- The installer places the app in `Program Files`
+- On launch, Electron starts the .NET API silently in the background on a free local port
+- The UI opens in a native window — no browser or terminal needed
+- Closing the app shuts down the API automatically
+
+### Project structure
+
+```
+electron-shell/
+├── main.js              ← Electron entry point
+├── package.json         ← electron-builder config
+└── resources/           ← populated by build-electron.ps1
+    ├── api/             ← self-contained .NET publish output + tools/
+    └── app/             ← Angular production build
+```
+
 ## Endpoints
 
 | Method | Route | Description |

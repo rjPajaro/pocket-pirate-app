@@ -1,4 +1,8 @@
-﻿<div class="container">
+﻿<div class="toast" [class.toast-visible]="toastVisible">
+  <span class="toast-icon">&#10003;</span> {{ toast }}
+</div>
+
+<div class="container">
   <div class="card">
     <div class="header">
       <h1>Pocket Pirate</h1>
@@ -16,18 +20,24 @@
       />
     </div>
 
-    <div class="button-group">
-      <button class="btn btn-audio" (click)="download('mp3')" [disabled]="loading">
-        <span class="btn-icon">&#x1F3A7;</span> Download MP3
-      </button>
-      <button class="btn btn-video" (click)="download('mp4')" [disabled]="loading">
-        <span class="btn-icon">&#x1F3AC;</span> Download MP4
-      </button>
+    <div class="progress-section" *ngIf="loading">
+      <div class="progress-info">
+        <span class="progress-pct">{{ progress }}%</span>
+        <span class="progress-status">{{ status === 'converting' ? 'Converting…' : 'Downloading…' }}</span>
+        <span class="progress-timer">{{ elapsedDisplay }}</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" [style.width.%]="progress"></div>
+      </div>
     </div>
 
-    <div class="loading" *ngIf="loading">
-      <div class="spinner"></div>
-      <span>Converting&hellip;</span>
+    <div class="button-group">
+      <button class="btn btn-audio" (click)="download('mp3')" [disabled]="loading">
+        Download MP3
+      </button>
+      <button class="btn btn-video" (click)="download('mp4')" [disabled]="loading">
+        Download MP4
+      </button>
     </div>
 
     <div class="error" *ngIf="error">

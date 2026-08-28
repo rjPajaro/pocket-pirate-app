@@ -1,0 +1,45 @@
+{
+  "name": "pocket-pirate",
+  "version": "0.1.0",
+  "description": "Pocket Pirate desktop app",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "build": {
+    "appId": "com.pocketpirate.app",
+    "productName": "Pocket Pirate",
+    "directories": {
+      "output": "../dist-electron"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "resources/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "extraFiles": [
+      { "from": "splash.html", "to": "splash.html" }
+    ],
+    "extraResources": [
+      {
+        "from": "resources/api",
+        "to": "api",
+        "filter": ["**/*"]
+      },
+      {
+        "from": "resources/app",
+        "to": "app",
+        "filter": ["**/*"]
+      }
+    ]
+  }
+}
