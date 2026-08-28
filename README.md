@@ -1,6 +1,12 @@
 # Pocket Pirate App
 
-A .NET 10 Web API that converts YouTube (and other) URLs to MP3 or MP4 using `yt-dlp` and `ffmpeg`.
+A Windows desktop app that lets you download YouTube videos and audio with a single click. Paste a URL, pick MP3 or MP4, and the file is saved to your machine — no browser extensions, no ads, no account required.
+
+## Download
+
+**[⬇ Download Pocket Pirate v0.1.0 (Windows)](https://github.com/rjPajaro/pocket-pirate-app/releases/download/v0.1.0/pocket-pirate-v0.1.0-win.zip)**
+
+Extract the zip and run `Pocket Pirate.exe`. Do not move the exe out of the folder.
 
 ## Prerequisites
 
