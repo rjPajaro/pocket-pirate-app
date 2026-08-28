@@ -42,6 +42,46 @@ cd backend\PocketPirate\PocketPirate
 dotnet run
 ```
 
+## Frontend
+
+The frontend is an Angular 13 single-page application located in the `frontend/` directory.
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) and npm
+- Angular CLI: `npm install -g @angular/cli`
+
+### Setup
+
+```powershell
+cd frontend
+npm install
+```
+
+### Running the dev server
+
+```powershell
+ng serve
+```
+
+Navigate to `http://localhost:4200/`. The app will automatically reload on source file changes.
+
+The UI lets you paste a video URL and download it as MP3 or MP4. It communicates with the backend API running on its configured base URL.
+
+### Build
+
+```powershell
+ng build
+```
+
+Build artifacts are output to the `dist/` directory.
+
+### Running unit tests
+
+```powershell
+ng test
+```
+
 ## Endpoints
 
 | Method | Route | Description |
