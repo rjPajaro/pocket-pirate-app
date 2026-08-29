@@ -36,6 +36,23 @@
     border-radius: 2px;
     animation: slide 1.2s ease-in-out infinite;
   }
+  /* shown only while downloading an update */
+  .progress-track {
+    display: none;
+    width: 200px;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #6c63ff, #a78bfa);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
   .label {
     margin-top: 16px;
     font-size: 0.82rem;
@@ -51,8 +68,11 @@
 </head>
 <body>
   <h1>Pocket Pirate</h1>
-  <p style="font-size:0.75rem;color:rgba(255,255,255,0.3);margin-bottom:24px">v0.1.0</p>
+  <p style="font-size:0.75rem;color:rgba(255,255,255,0.3);margin-bottom:24px">v0.1.1</p>
   <div class="track"><div class="bar"></div></div>
-  <p class="label">Starting up…</p>
+  <div class="progress-track" id="progress-track">
+    <div class="progress-fill" id="progress-fill"></div>
+  </div>
+  <p class="label" id="splash-label">Starting up…</p>
 </body>
 </html>

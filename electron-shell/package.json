@@ -1,12 +1,15 @@
 {
   "name": "pocket-pirate",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Pocket Pirate desktop app",
   "main": "main.js",
   "private": true,
   "scripts": {
     "start": "electron .",
     "dist": "electron-builder"
+  },
+  "dependencies": {
+    "electron-updater": "^6.3.0"
   },
   "devDependencies": {
     "electron": "^31.0.0",
@@ -26,8 +29,14 @@
       "oneClick": false,
       "allowToChangeInstallationDirectory": true
     },
+    "publish": {
+      "provider": "github",
+      "owner": "rjPajaro",
+      "repo": "pocket-pirate-app"
+    },
     "extraFiles": [
-      { "from": "splash.html", "to": "splash.html" }
+      { "from": "splash.html", "to": "splash.html" },
+      { "from": "preload.js",  "to": "preload.js"  }
     ],
     "extraResources": [
       {
