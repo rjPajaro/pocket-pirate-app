@@ -1,4 +1,4 @@
-import { Component, NgZone, OnDestroy } from '@angular/core';
+import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
 
@@ -8,7 +8,7 @@ import { environment } from '../environments/environment';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent implements OnInit, OnDestroy {
   url = '';
   loading = false;
   error = '';
@@ -17,6 +17,12 @@ export class AppComponent implements OnDestroy {
   elapsed = 0;
   toast = '';
   toastVisible = false;
+
+  updateAvailable = false;
+  updateDownloaded = false;
+  updateDownloading = false;
+  updateVersion = '';
+  updateProgress = 0;
 
   private eventSource: EventSource | null = null;
   private timerInterval: ReturnType<typeof setInterval> | null = null;
@@ -27,8 +33,32 @@ export class AppComponent implements OnDestroy {
 
   constructor(private http: HttpClient, private zone: NgZone) {}
 
+  ngOnInit(): void {
+    const updater = (window as any).updater;
+    if (!updater) return;
+
+    updater.onUpdateAvailable((info: any) => this.zone.run(() => {
+      this.updateAvailable = true;
+      this.updateVersion = info.version;
+    }));
+
+    updater.onDownloadProgress((p: any) => this.zone.run(() => {
+      this.updateDownloading = true;
+      this.updateProgress = Math.round(p.percent);
+    }));
+
+    updater.onUpdateDownloaded(() => this.zone.run(() => {
+      this.updateDownloading = false;
+      this.updateDownloaded = true;
+    }));
+  }
+
   ngOnDestroy(): void {
     this.cleanup();
+  }
+
+  installUpdate(): void {
+    (window as any).updater?.installUpdate();
   }
 
   private get apiBase(): string {

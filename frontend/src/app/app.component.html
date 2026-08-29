@@ -2,6 +2,19 @@
   <span class="toast-icon">&#10003;</span> {{ toast }}
 </div>
 
+<div class="update-bar" *ngIf="updateAvailable">
+  <span *ngIf="updateDownloaded">
+    v{{ updateVersion }} ready —
+    <button class="update-action" (click)="installUpdate()">Restart to update</button>
+  </span>
+  <span *ngIf="updateDownloading">
+    Downloading update… {{ updateProgress }}%
+  </span>
+  <span *ngIf="!updateDownloaded && !updateDownloading">
+    v{{ updateVersion }} available — downloading in background…
+  </span>
+</div>
+
 <div class="container">
   <div class="card">
     <div class="header">

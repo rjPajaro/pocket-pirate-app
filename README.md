@@ -4,9 +4,11 @@ A Windows desktop app that lets you download YouTube videos and audio with a sin
 
 ## Download
 
-**[⬇ Download Pocket Pirate v0.1.0 (Windows)](https://github.com/rjPajaro/pocket-pirate-app/releases/download/v0.1.0/pocket-pirate-v0.1.0-win.zip)**
+**[⬇ Download Pocket Pirate v0.1.1 (Windows)](https://github.com/rjPajaro/pocket-pirate-app/releases/download/v0.1.1/pocket-pirate-v0.1.1-win.zip)**
 
 Extract the zip and run `Pocket Pirate.exe`. Do not move the exe out of the folder.
+
+> The app checks for updates automatically every time it launches. If a newer version is available it downloads silently in the background during the loading screen and installs it before the main window opens. No manual re-downloading required.
 
 ## Prerequisites
 
@@ -115,7 +117,8 @@ The installer is output to `dist-electron/`.
 ### What happens at runtime
 
 - The installer places the app in `Program Files`
-- On launch, Electron starts the .NET API silently in the background on a free local port
+- On launch, Electron checks GitHub for a newer version and downloads it silently during the loading screen
+- Once updated (or if already up to date), the .NET API starts in the background on a free local port
 - The UI opens in a native window — no browser or terminal needed
 - Closing the app shuts down the API automatically
 
